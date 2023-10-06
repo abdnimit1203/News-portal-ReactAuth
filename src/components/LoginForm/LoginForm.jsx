@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { AuthContext } from "../../Hook/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const LoginForm = () => {
+const LoginForm = ({state}) => {
+  console.log("From LoginForm : " , state);
   const toastSignInSuccess = () => toast.success("Email signin Success!");
 const {emailSignIn } = useContext(AuthContext);
 const navigate = useNavigate()
@@ -16,7 +18,8 @@ const navigate = useNavigate()
     emailSignIn(email,password)
     .then(result=>{
       console.log(result.user);
-      navigate("/");
+      // console.log(state);
+      navigate(state? state : "/");
       toastSignInSuccess();
     })
     .catch(error=>{

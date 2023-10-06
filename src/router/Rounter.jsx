@@ -7,6 +7,7 @@ import Error404 from './../pages/Error404/Error404';
 import Login from './../pages/Login/Login';
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import NewsDetails from "../components/NewsDetails/NewsDetails";
+import PrivateRouter from "./PrivateRouter";
 
 export const myRouter = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ export const myRouter = createBrowserRouter([
         },
         {
           path: "/:_id",
-          element: <NewsDetails></NewsDetails>,
+          element: <PrivateRouter><NewsDetails></NewsDetails></PrivateRouter>,
           loader: ()=>fetch(`/news.json`)
         }
       ],

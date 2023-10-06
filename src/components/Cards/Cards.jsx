@@ -8,7 +8,7 @@ const Cards = () => {
           .then((res) => res.json())
           .then((data) => setCards(data));
       }, []);
-      console.log(cards);
+    //   console.log(cards);
     return (
         <div>
            <h2>Dragon News Home</h2> 

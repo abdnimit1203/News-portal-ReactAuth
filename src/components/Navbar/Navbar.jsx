@@ -58,7 +58,7 @@ const Navbar = () => {
             <img
               src={user?.photoURL}
               alt="profilepic"
-              className="w-12 rounded-full"
+              className="w-12 rounded-full aspect-square"
             />
           ) : (
             <h2 className="font-semibold px-2">{user.email} </h2>

@@ -2,7 +2,7 @@
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../Hook/AuthProvider";
 import { MdEditSquare } from "react-icons/md";
@@ -29,16 +29,31 @@ const Navbar = () => {
   };
   const navLinks = (
     <>
-      <Link to={"/"}>
-        <li>Home</li>
-      </Link>
-      <Link to={"/about"}>
-        <li>About</li>
-      </Link>
-
-      <Link to={"/register"}>
-        <li>Register</li>
-      </Link>
+      <NavLink
+        to="/"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? " active text-red-500" : ""
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/about"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? " active text-red-500" : ""
+        }
+      >
+        About
+      </NavLink>
+      <NavLink
+        to="/register"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? " active text-red-500" : ""
+        }
+      >
+        Register
+      </NavLink>
+      
     </>
   );
   const navlinksUser = (
@@ -67,7 +82,6 @@ const Navbar = () => {
           <h3 className="font-semibold px-2">
             {user?.displayName}
             <span className="flex justify-center items-center text-xs font-light bg-teal-500 text-white rounded-xl px-2">
-            
               <p>Edit profile</p>
               <Link to={"/update-profile"}>
                 <MdEditSquare className="ml-2" />
@@ -89,9 +103,11 @@ const Navbar = () => {
           <p></p>
         </div>
         <div className="flex  md:navbar-center mx-auto">
-          <ul className="menu menu-horizontal px-4 gap-2">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-4 gap-4 text-lg font-semibold">
+            {navLinks}
+          </ul>
         </div>
-        <div className="navbar-end ">{navlinksUser}</div>
+        <div className="navbar-end  ">{navlinksUser}</div>
       </div>
     </div>
   );

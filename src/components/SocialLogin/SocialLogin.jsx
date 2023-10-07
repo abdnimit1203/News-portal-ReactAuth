@@ -4,14 +4,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SocialLogin = () => {
-  
   const toastSignInSuccess = () => toast.success("User Signed in successFully");
+  
     const { googleSignIn} = useContext(AuthContext);
     const handleGoogleLogIn = ()=>{
         googleSignIn()
         .then(result=>{
           console.log(result.user);
-          toastSignInSuccess();
+          toastSignInSuccess()
         })
         .catch(error=>{
           console.log(error.message);
